@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    background-color: #ecf0ec;
+    font-family: sans-serif;
+    outline: none;
+}
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calculator{
+    background-color: #9f9f9f;
+    padding: 15px;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns:repeat(4,68px)
+}
+input{
+    grid-column:span 4 ;
+    height:70px;
+    width: 260px;
+    background-color: #ecf0f3;
+    border:none;
+    border-radius: 30px;
+    color: rgb(70,70,70);
+    font-size: 50px;
+    text-align: end;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+button{
+    height: 40px;
+    width: 40px;
+    background-color: #ecf0f3;
+    border: none;
+    border-radius: 50%;
+    margin: 8px;
+    font-size: 16px;
+}
+.equal{
+    width:115px;
+    border-radius: 40px;
+    
+}
+    </style>
+</head>
+<body>
+    <script src="https://app.zenclass.in/sheets/v1/js/zen/suite/bundle.js"></script>
+    <h1 id="title">Calculator</h1>
+    <p id="description">Calculator using HTML, CSS and Javascript</p>
+   <input type="text" id="result">
+     <div class="container">
+        <div class="calculator">
+            <input type="text" placeholder="0" id="output-screen">
+            <button onclick="clearScreen()" class="btn btn-light" id="clear">C</button>
+            <button onclick="del()" class="btn btn-light" id="backspace">Del</button>
+            <button onclick="display('.')" class="btn btn-light" id="decimal">.</button>
+            <button onclick="display('/')" class="btn btn-primary" id="divide">/</button>
+
+            <button onclick="display('7')" class="btn btn-light" id="7">7</button>
+            <button onclick="display('8')" class="btn btn-light" id="8">8</button>
+            <button onclick="display('9')" class="btn btn-light" id="9">9</button>
+            <button onclick="display('*')" class="btn btn-success" id="multiply">*</button>
+
+            <button onclick="display('4')" class="btn btn-light" id="4">4</button>
+            <button onclick="display('5')" class="btn btn-light" id="5">5</button>
+            <button onclick="display('6')" class="btn btn-light" id="6">6</button>
+            <button onclick="display('-')" class="btn btn-warning" id="subtract">-</button>
+
+            <button onclick="display('1')" class="btn btn-light" id="1">1</button>
+            <button onclick="display('2')" class="btn btn-light" id="2">2</button>
+            <button onclick="display('3')" class="btn btn-light" id="3">3</button>
+            <button onclick="display('+')" class="btn btn-danger" id="add">+</button>
+
+            <button onclick="display('0')" class="btn btn-light" id="0">0</button>
+            <button onclick="display('00')" class="btn btn-light" id="00">00</button>
+            <button onclick="calculate()" class="btn btn-light equal" id="equal">=</button>
+        </div>
+    </div>
+
+<script>
+    let outputscreen = document.getElementById("output-screen");
+    let resultInput = document.getElementById("result");
+
+    function display(num) {
+        outputscreen.value += num;
+    }
+
+    function calculate() {
+        try {
+            const result = eval(outputscreen.value);
+            outputscreen.value = result;
+            resultInput.value = result; 
+        } catch (err) {
+            alert("Invalid Expression");
+        }
+    }
+
+    function clearScreen() {
+        outputscreen.value = "";
+        resultInput.value = ""; 
+    }
+
+    function del() {
+        outputscreen.value = outputscreen.value.slice(0, -1);
+    }
+
+</script>
+
+</body>
+</html>
